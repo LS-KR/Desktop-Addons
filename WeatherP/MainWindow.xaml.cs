@@ -32,9 +32,9 @@ namespace WeatherP
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.ShowInTaskbar = false;
-            if (File.Exists(Directory.GetCurrentDirectory() + "Panel.ini"))
+            if (File.Exists(Directory.GetCurrentDirectory() + "WeatherP.ini"))
             {
-                string[] locate = File.ReadAllLines(Directory.GetCurrentDirectory() + "Panel.ini");
+                string[] locate = File.ReadAllLines(Directory.GetCurrentDirectory() + "WeatherP.ini");
                 this.Left = Convert.ToInt32(locate[0]);
                 this.Top = Convert.ToInt32(locate[1]);
             }
@@ -79,8 +79,8 @@ namespace WeatherP
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
-            File.WriteAllText(Directory.GetCurrentDirectory() + "Panel.ini", Convert.ToString(this.Left));
-            File.AppendAllText(Directory.GetCurrentDirectory() + "Panel.ini", "\n" + Convert.ToString(this.Top));
+            File.WriteAllText(Directory.GetCurrentDirectory() + "WeatherP.ini", Convert.ToString(this.Left));
+            File.AppendAllText(Directory.GetCurrentDirectory() + "WeatherP.ini", "\n" + Convert.ToString(this.Top));
         }
         private BitmapImage BitmapToBitmapImage(System.Drawing.Bitmap bitmap)
         {
