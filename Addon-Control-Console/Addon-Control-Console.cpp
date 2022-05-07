@@ -47,15 +47,22 @@ int main()
 		while (std::getline(inf, com))
 		{
 			if (com == "Clock")
-				ShellExecute(0, "open", std::strstr(Path, "Clock"), NULL, Path, SW_SHOWNORMAL);
+				ShellExecute(0, "open", std::strcat(Path, "Clock"), NULL, Path, SW_SHOWNORMAL);
 			else if (com == "Panel")
-				ShellExecute(0, "open", std::strstr(Path, "Panel"), NULL, Path, SW_SHOWNORMAL);
+				ShellExecute(0, "open", std::strcat(Path, "Panel"), NULL, Path, SW_SHOWNORMAL);
 			else if (com == "SystemMonitor")
-				ShellExecute(0, "open", std::strstr(Path, "SystemMonitor"), NULL, Path, SW_SHOWNORMAL);
+				ShellExecute(0, "open", std::strcat(Path, "SystemMonitor"), NULL, Path, SW_SHOWNORMAL);
 			else if (com == "WeatherP")
-				ShellExecute(0, "open", std::strstr(Path, "WeatherP"), NULL, Path, SW_SHOWNORMAL);
+				ShellExecute(0, "open", std::strcat(Path, "WeatherP"), NULL, Path, SW_SHOWNORMAL);
 			else
-				ShellExecute(0, "open", std::strstr(Path, com.c_str()), NULL, Path, SW_SHOWNORMAL);
+			{
+				std::string ss = std::strcat(Path, com.c_str());
+				if (isFileExists_stat(ss))
+					ShellExecute(0, "open", std::strcat(Path, com.c_str()), NULL, Path, SW_SHOWNORMAL);
+				else
+					ShellExecute(0, "open", com.c_str(), NULL, Path, SW_SHOWNORMAL);
+			}
+			std::cout << com;
 		}
 	}
 	else
