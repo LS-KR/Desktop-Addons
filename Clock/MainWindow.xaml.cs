@@ -64,15 +64,15 @@ namespace Clock
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
-            File.WriteAllText(Directory.GetCurrentDirectory() + "Panel.ini", Convert.ToString(this.Left));
-            File.AppendAllText(Directory.GetCurrentDirectory() + "Panel.ini", "\n" + Convert.ToString(this.Top));
+            File.WriteAllText(Directory.GetCurrentDirectory() + "Clock.ini", Convert.ToString(this.Left));
+            File.AppendAllText(Directory.GetCurrentDirectory() + "Clock.ini", "\n" + Convert.ToString(this.Top));
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.ShowInTaskbar = false;
-            if (File.Exists(Directory.GetCurrentDirectory() + "Panel.ini"))
+            if (File.Exists(Directory.GetCurrentDirectory() + "Clock.ini"))
             {
-                string[] locate = File.ReadAllLines(Directory.GetCurrentDirectory() + "Panel.ini");
+                string[] locate = File.ReadAllLines(Directory.GetCurrentDirectory() + "Clock.ini");
                 this.Left = Convert.ToInt32(locate[0]);
                 this.Top = Convert.ToInt32(locate[1]);
             }
