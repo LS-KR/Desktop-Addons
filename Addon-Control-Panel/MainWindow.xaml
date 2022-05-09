@@ -1,0 +1,27 @@
+﻿<Window x:Class="Addon_Control_Panel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Addon_Control_Panel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="300"
+        MaxHeight="450" MaxWidth="300" MinHeight="450" MinWidth="300"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Label Content="时钟" Margin="10,10" VerticalAlignment="Top" HorizontalAlignment="Left" Width="36" Height="24"/>
+        <Label Content="数字时钟面板" Margin="10,34" Width="108" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="系统监视器" Margin="10,58" Width="90" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="天气" Margin="10,82" Width="36" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <RadioButton x:Name="ClockOn" Content="Enable" Margin="128,15,0,0" GroupName="Clock" Width="60" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <RadioButton x:Name="ClockOff" Content="Disable" Margin="208,15,0,0" GroupName="Clock" Width="65" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True"/>
+        <RadioButton x:Name="PanelOn" Content="Enable" Margin="128,39,0,0" GroupName="Panel" Width="60" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <RadioButton x:Name="PanelOff" Content="Disable" Margin="208,39,0,0" GroupName="Panel" Width="65" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True"/>
+        <RadioButton x:Name="SysOn" Content="Enable" Margin="128,63,0,0" GroupName="Sys" Width="60" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <RadioButton x:Name="SysOff" Content="Disable" Margin="208,63,0,0" GroupName="Sys" Width="65" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True"/>
+        <RadioButton x:Name="WeatherOn" Content="Enable" Margin="128,87,0,0" GroupName="Weather" Width="60" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <RadioButton x:Name="WeatherOff" Content="Disable" Margin="208,87,0,0" GroupName="Weather" Width="65" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True"/>
+        <Button x:Name="BSave" Content="保存" Width="60" Height="24" Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="BSave_Click"/>
+        <Button x:Name="BDo" Content="执行" Width="60" Height="24" Margin="10,10,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="BDo_Click"/>
+    </Grid>
+</Window>
