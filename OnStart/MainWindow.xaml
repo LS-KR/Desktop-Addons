@@ -1,0 +1,82 @@
+﻿<Window x:Class="OnStart.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnStart"
+        mc:Ignorable="d"
+        AllowsTransparency="True" Background="#44555555" WindowStyle="None"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Window.Resources>
+        <Style x:Key="chkBullet" TargetType="CheckBox">
+            <Setter Property="IsChecked" Value="False"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#999"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border Width="50" Height="20" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="AliceBlue" BorderThickness="1" >
+                            <Grid>
+                                <Border x:Name="border" Width="18" Height="18" CornerRadius="9" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0" Background="White">
+                                    <Border.RenderTransform>
+                                        <TranslateTransform  X="0"/>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <TextBlock x:Name="txt" Text="{TemplateBinding Content}" Margin="5 0" VerticalAlignment="Center" Foreground="White" >
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform   X="18"></TranslateTransform>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Text" TargetName="txt" Value="{Binding Tag,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="30" Duration="00:00:0.2"/>
+                                            <DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="2.5" Duration="00:00:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="0" Duration="00:00:0.2"/>
+                                            <DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="18" Duration="00:00:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Text" TargetName="txt" Value="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Label x:Name="LTitle" Content="Welcome" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10" HorizontalContentAlignment="Center" Height="100" FontSize="72" FontFamily="Consolas" Foreground="AliceBlue"/>
+        <CheckBox x:Name="ChkClock" Style="{StaticResource chkBullet}" Content="Off" Margin="100,120" Background="Transparent" Tag="On" IsChecked="False" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Content="指針時鐘" Margin="160,115" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="AliceBlue" FontFamily="Consolas" FontSize="18"/>
+        <CheckBox x:Name="ChkPanel" Style="{StaticResource chkBullet}" Content="Off" Margin="500,120,0,0" Background="Transparent" Tag="On" IsChecked="False" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Content="數字面板" Margin="560,115,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="AliceBlue" FontFamily="Consolas" FontSize="18"/>
+        <CheckBox x:Name="ChkWeath" Style="{StaticResource chkBullet}" Content="Off" Margin="100,180" Background="Transparent" Tag="On" IsChecked="False" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Content="天氣面板" Margin="160,175" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="AliceBlue" FontFamily="Consolas" FontSize="18"/>
+        <CheckBox x:Name="ChkSystm" Style="{StaticResource chkBullet}" Content="Off" Margin="500,180,0,0" Background="Transparent" Tag="On" IsChecked="False" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Content="系統監視器" Margin="560,175,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="AliceBlue" FontFamily="Consolas" FontSize="18"/>
+        <Button x:Name="BConfirm" Margin="690,410,0,0" Width="90" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BConfirm_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Background="Transparent" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="12" Margin="0,0,0,0">
+                        <Label Content="確認" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="AliceBlue" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>
