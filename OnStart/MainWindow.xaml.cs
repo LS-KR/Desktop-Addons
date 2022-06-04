@@ -46,7 +46,14 @@ namespace OnStart
             if (this.ChkWeath.IsChecked == true)
                 vs.Add("WeatherP");
             var putline = vs.ToArray();
-            File.WriteAllLines(Directory.GetCurrentDirectory() + "addon.ini", putline);
+            try
+            {
+                File.WriteAllLines(Directory.GetCurrentDirectory() + "\\addon.ini", putline);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), ex.Message);
+            }
             Application.Current.MainWindow.Close();
         }
     }
