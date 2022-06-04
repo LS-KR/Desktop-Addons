@@ -35,6 +35,7 @@ bool isFileExists_stat(std::string& name)
 int main()
 {
 	char Path[MAX_PATH + 1] = { 0 };
+	char Patht[MAX_PATH + 1] = "";
 	getWorkDir(Path);
 	std::cout << Path << std::endl;
 	std::string temps0 = "addon.ini";
@@ -44,21 +45,25 @@ int main()
 	{
 		std::ifstream inf(configfile);
 		std::string com;
+		std::strcpy(Patht, Path);
 		while (std::getline(inf, com))
 		{
+			std::strcpy(Patht, Path);
+			if (com == "")
+				continue;
 			if (com == "Clock")
-				ShellExecute(0, "open", std::strcat(Path, "Clock"), NULL, Path, SW_SHOWNORMAL);
+				ShellExecute(0, "open", std::strcat(Patht, "Clock"), NULL, NULL, SW_SHOWNORMAL);
 			else if (com == "Panel")
-				ShellExecute(0, "open", std::strcat(Path, "Panel"), NULL, Path, SW_SHOWNORMAL);
+				ShellExecute(0, "open", std::strcat(Patht, "Panel"), NULL, NULL, SW_SHOWNORMAL);
 			else if (com == "SystemMonitor")
-				ShellExecute(0, "open", std::strcat(Path, "SystemMonitor"), NULL, Path, SW_SHOWNORMAL);
+				ShellExecute(0, "open", std::strcat(Patht, "SystemMonitor"), NULL, NULL, SW_SHOWNORMAL);
 			else if (com == "WeatherP")
-				ShellExecute(0, "open", std::strcat(Path, "WeatherP"), NULL, Path, SW_SHOWNORMAL);
+				ShellExecute(0, "open", std::strcat(Patht, "WeatherP"), NULL, NULL, SW_SHOWNORMAL);
 			else
 			{
-				std::string ss = std::strcat(Path, com.c_str());
+				std::string ss = std::strcat(Patht, com.c_str());
 				if (isFileExists_stat(ss))
-					ShellExecute(0, "open", std::strcat(Path, com.c_str()), NULL, Path, SW_SHOWNORMAL);
+					ShellExecute(0, "open", std::strcat(Patht, com.c_str()), NULL, NULL, SW_SHOWNORMAL);
 				else
 					ShellExecute(0, "open", com.c_str(), NULL, Path, SW_SHOWNORMAL);
 			}
@@ -68,7 +73,7 @@ int main()
 	else
 	{
 		std::cout << "File not Found";
-		return -1;
+		ShellExecute(0, "open", std::strcat(Path, "OnStart.exe"), NULL, NULL, SW_SHOWNORMAL);
 	}
 	return 0;
 }
