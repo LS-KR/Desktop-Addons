@@ -48,9 +48,9 @@ namespace Addon_Control_Panel
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!File.Exists(Directory.GetCurrentDirectory() + "addon.ini"))
-                File.Create(Directory.GetCurrentDirectory() + "addon.ini");
-            string[] vs = File.ReadAllLines(Directory.GetCurrentDirectory() + "addon.ini");
+            if (!File.Exists(Directory.GetCurrentDirectory() + "\\addon.ini"))
+                File.Create(Directory.GetCurrentDirectory() + "\\addon.ini");
+            string[] vs = File.ReadAllLines(Directory.GetCurrentDirectory() + "\\addon.ini");
             foreach (string v in vs)
             {
                 if (v == "Clock")
@@ -87,12 +87,12 @@ namespace Addon_Control_Panel
             if (this.WeatherOn.IsChecked == true)
                 config.Add("WeatherP");
             string[] v = config.ToArray();
-            File.WriteAllLines(Directory.GetCurrentDirectory() + "addon.ini", v);
+            File.WriteAllLines(Directory.GetCurrentDirectory() + "\\addon.ini", v);
         }
         private void BDo_Click(object sender, RoutedEventArgs e)
         {
             BSave_Click(sender, e);
-            API.ShellExecute(IntPtr.Zero, "open", Directory.GetCurrentDirectory() + "Addon-Control-Console.exe", null, Directory.GetCurrentDirectory(), API.SW_HIDE);
+            API.ShellExecute(IntPtr.Zero, "open", Directory.GetCurrentDirectory() + "\\Addon-Control-Console.exe", null, Directory.GetCurrentDirectory(), API.SW_HIDE);
             Application.Current.Shutdown();
         }
     }
