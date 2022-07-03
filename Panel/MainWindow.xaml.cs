@@ -77,6 +77,11 @@ namespace Panel
             else
                 this.ITile.Source = API.GetUserTileImage(null);
             LName.Content = System.Environment.UserName;
+            if ((dt.Month == 3) && (dt.Day == 31))
+            {
+                this.GT.Visibility = Visibility.Visible;
+                this.GN.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#00FFFFFF"));
+            }
         }
         private BitmapImage BitmapToBitmapImage(Bitmap bitmap)
         {

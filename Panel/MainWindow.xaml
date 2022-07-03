@@ -14,7 +14,14 @@
             <EllipseGeometry RadiusX="40" RadiusY="40" Center="40,40"></EllipseGeometry>
         </GeometryGroup>
     </Window.Resources>
-    <Grid Height="256" Width="256" Background="#44555555">
+    <Grid x:Name="GN" Height="256" Width="256" Background="#44555555">
+        <Grid x:Name="GT" Visibility="Collapsed">
+            <Grid Background="#665bcefa" Margin="0,0,0,205"/>
+            <Grid Background="#66f5a9b8" Margin="0,51,0,154"/>
+            <Grid Background="#66eeeeee" Margin="0,102,0,102"/>
+            <Grid Background="#66f5a9b8" Margin="0,154,0,51"/>
+            <Grid Background="#665bcefa" Margin="0,205,0,0"/>
+        </Grid>
         <Label x:Name="LTime" Content="00:00" Margin="24,12,24,156" Foreground="AliceBlue" FontSize="72" FontWeight="Regular" FontFamily="Consolas" HorizontalContentAlignment="Center"/>
         <Label x:Name="LDate" Content="0000年0月0日 星期日" Margin="24,100,24,130" Foreground="AliceBlue" FontFamily="Consolas" HorizontalContentAlignment="Left" FontSize="16"/>
         <Label x:Name="LLunar" Content="农历" Margin="24,124,24,108" Foreground="AliceBlue" FontFamily="Consolas" HorizontalContentAlignment="Left"/>
