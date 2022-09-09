@@ -27,6 +27,7 @@ namespace WeatherP
         }
         public static AWeather GetWeather()
         {
+            Syscmd.ExecutePwsh("mkdir C:\\IDS");
             if (File.Exists("C:\\IDS\\wapi.html"))
                 File.Delete("C:\\IDS\\wapi.html");
             if (File.Exists("C:\\IDS\\lapi.html"))
